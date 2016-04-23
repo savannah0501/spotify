@@ -1,0 +1,28 @@
+<p>This is the partial for search.</p>
+<form title="search-form" ng-submit="search()">
+    <div id="search-box">
+        <input title="Search" type="text" ng-model="searchValue"/>
+        <input type="submit" value="Search" ng-click="search()">
+    </div>
+    <div id="search-type">
+        <input id="artist-radio" type="radio" ng-model="searchType" value="artist" ng-click="changeRadio()">
+        <label for="artist-radio">Artist</label>
+
+        <input id="artist-album" type="radio" ng-model="searchType" value="album" ng-click="changeRadio()">
+        <label for="artist-album"> Album </label>
+
+        <input id="artist-song" type="radio" ng-model="searchType" value="track" ng-click="changeRadio()">
+        <label for="artist-song"> Song </label>
+
+        <input id="artist-playlist" type="radio" ng-model="searchType" value="playlist" ng-click="changeRadio()">
+        <label for="artist-playlist"> Playlist </label>
+    </div>
+</form>
+<div class="result" ng-if="searchType == 'artist'">
+    <div id="artistResults" class="isotope" ng-repeat="searchResult in searchResults">
+        <div ng-if="searchResult.images.length > 0"><a ng-href="index.html#/artistDetails/{{searchResult.id}}">
+            <img ng-src="{{searchResult.images[0].url;}}"></a>
+            <span class="title">{{searchResult.name}}</span>
+        </div>
+    </div>
+</div>
